@@ -9,11 +9,11 @@ und die beiden Schätzer der Wurzel ([elliptic-envelope-demo](../elliptic-envelo
 
 **Einordnung in die Reihe (die Kanten des Graphen):** LOF ist ein **eigener Ast direkt nach der Wurzel**, neben Isolation Forest und Extended Isolation Forest. Die Wurzel beschreibt das Normale als eine Wolke, der Isolation Forest fragt, wie schnell sich eine Tour abtrennen lässt.
 LOF fragt Lokaleres: **ist die Umgebung dieser Tour dünner besetzt als die Umgebung ihrer k Nachbarn?** (LOF ≈ 1 = so dicht wie die Nachbarn.) Er setzt an den in den Vorgängern gemessenen Schwächen an – **dichte Anomaliegruppen (Masking)** und die **Lücke zwischen den Betriebsarten** –
-und hat eigene: er braucht ein **k, das zur Gruppengröße passt**, und leidet unter **irrelevanten Merkmalen** (der Ansatzpunkt für Feature Bagging). Die Linie hat **keinen Konvergenzpunkt**.
+und hat eigene: er braucht ein **k, das zur Gruppengröße passt**, und leidet unter **irrelevanten Merkmalen** (der Ansatzpunkt für [Feature Bagging](../feature-bagging-demo): mit den Teilmengengrößen des Originals hilft das Ensemble kaum, mit winzigen Teilmengen deutlich, aber mit großer Streuung). Die Linie hat **keinen Konvergenzpunkt**.
 ```
 elliptic-envelope-demo (Wurzel: robuste Ellipse)
   ├─ ECOD                       (Kontrast: verteilungsfrei)                              [nicht gebaut]
-  ├─ lof-demo → Feature Bagging (lokale Dichte; Ensembles gegen viele Merkmale)          [dieses Stück; Feature Bagging nicht gebaut]
+  ├─ lof-demo → feature-bagging-demo (lokale Dichte; Ensembles gegen viele Merkmale)      [dieses Stück → Nachfolger gebaut]
   ├─ One-Class SVM → Deep SVDD  (gelernte Grenze)                                        [nicht gebaut]
   ├─ isolation-forest-demo → extended-isolation-forest-demo (Zufallsbäume)               [gebaut]
   └─ Autoencoder                (Rekonstruktionsfehler)                                  [nicht gebaut]
