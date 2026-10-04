@@ -145,7 +145,7 @@ Damit setzt er genau an den Schwächen an, die in den Vorgängern gemessen wurde
 st.caption(
     "Anders als die Fall-Demos im Portfolio, die an einem Anwendungsfall mehrere Verfahren vergleichen, zeigt diese Demo - viertes Stück der Anomalie-Erkennung-Linie der \"Konzepte\"-Reihe - **ein** Verfahren an einem wachsenden Beispiel. "
     "Szenario, Isolation Forest und die Schätzer der Wurzel (klassisch, robust per MCD) sind wortgleich aus den Vorgänger-Demos übernommen, damit der Vergleich denselben Boden hat. Die Linie hat keinen Konvergenzpunkt; "
-    "LOF ist ein eigener Ast, seine Fortsetzung (Feature Bagging gegen den Dimensionsfluch) ist noch nicht gebaut."
+    "LOF ist ein eigener Ast, seine Fortsetzung (Feature Bagging gegen den Dimensionsfluch) ist als feature-bagging-demo gebaut."
 )
 
 with st.expander("So funktioniert der Local Outlier Factor", expanded=True):
@@ -468,7 +468,7 @@ if st.session_state.get("group_on"):
         gt = _group(tuple(kv for kv in base_data if kv[0] not in ("kind", "contamination", "n_modes")), settings)
     st.plotly_chart(build_group(gt), width="stretch", key="group_chart")
     st.caption("AUC des LOF (eine Linie je Gruppengröße, Mittel über 5 feste Datensätze, eine Betriebsart, dichte Gruppe abseits): **LOF sieht die Gruppe nur, wenn k größer ist als sie** - bei 15 Touren reicht k = 20 (AUC 0.99), bei 30 Touren erst k = 40 (0.97), "
-               "bei 60 Touren k = 80 (0.95), bei 90 Touren nicht einmal k = 100 (0.71). Ist k zu klein, ist die Gruppe selbst lokal dicht und LOF liegt unter Raten (0.34-0.52). Zum Vergleich: der Isolation Forest hat 0.99 / 0.95 / 0.85 / 0.70 "
+               "bei 60 Touren k = 80 (0.95), bei 90 Touren nicht einmal k = 100 (0.71). Ist k zu klein, ist die Gruppe selbst lokal dicht und LOF liegt unter oder um Raten (0.34-0.52). Zum Vergleich: der Isolation Forest hat 0.99 / 0.95 / 0.85 / 0.70 "
                "bei 5 / 10 / 20 / 30 %, die robuste Schätzung 1.00 / 1.00 / 1.00 / 0.49. Das passende k setzt voraus, dass man die Gruppengröße kennt.")
 
 st.markdown("---")
@@ -519,7 +519,7 @@ if st.session_state.get("k_on"):
         kt = _k_table(tuple(kv for kv in base_data if kv[0] not in ("n", "kind", "contamination", "n_modes")), settings)
     st.plotly_chart(build_k_table(kt), width="stretch", key="k_chart")
     st.caption("100 Touren, AUC des LOF über k bis n − 1 (Mittel über 5 feste Datensätze). Verstreute Anomalien (10 %): AUC 1.00 bis k = 90, bei **k = 99 = n − 1: 0.00** - alle Touren haben dieselben Nachbarn, die Reihenfolge kehrt sich um. "
-               "Dichte Gruppe von 20 Touren: unter Raten für k ≤ 20 (0.43 / 0.39 / 0.58), 0.99-1.00 für k = 30-70, bei k = 90 wieder 0.38 (0.05 bei k = 99). Deshalb bietet der Regler höchstens k = n / 2 an.")
+               "Dichte Gruppe von 20 Touren: unter oder um Raten für k ≤ 20 (0.43 / 0.39 / 0.58), 0.99-1.00 für k = 30-70, bei k = 90 wieder 0.38 (0.05 bei k = 99). Deshalb bietet der Regler höchstens k = n / 2 an.")
 
 st.markdown("---")
 
@@ -589,7 +589,7 @@ st.markdown(
 """
 )
 st.caption(
-    "Die Nachbarn der Anomalie-Erkennung-Linie: die Wurzel Elliptic Envelope, Isolation Forest und Extended IF (gebaut), Feature Bagging (die Fortsetzung von LOF), One-Class SVM und Deep SVDD, ECOD und ein Autoencoder (noch nicht gebaut). "
+    "Die Nachbarn der Anomalie-Erkennung-Linie: die Wurzel Elliptic Envelope, Isolation Forest und Extended IF, Feature Bagging (die Fortsetzung von LOF), One-Class SVM und Deep SVDD, ECOD und ein Autoencoder (alle gebaut). "
     "Keiner ist überlegen: LOF gewinnt bei dichten Gruppen und in der Lücke (mit passendem k), bei kleinen Stichproben an der Schwelle und ist schnell; er verliert bei vielen Anomalien, vielen Rauschmerkmalen und gebogenen Flächen."
 )
 
@@ -621,6 +621,6 @@ st.markdown("---")
 
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Anomalie-Erkennung: Ellipse bis Autoencoder](https://sebastianhanisch.net/konzepte-anomalie-erkennung.html)."
 )

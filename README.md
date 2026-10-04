@@ -12,9 +12,9 @@ LOF fragt Lokaleres: **ist die Umgebung dieser Tour dünner besetzt als die Umge
 und hat eigene: er braucht ein **k, das zur Gruppengröße passt**, und leidet unter **irrelevanten Merkmalen** (der Ansatzpunkt für [Feature Bagging](../feature-bagging-demo): mit den Teilmengengrößen des Originals hilft das Ensemble kaum, mit winzigen Teilmengen deutlich, aber mit großer Streuung). Die Linie hat **keinen Konvergenzpunkt**.
 ```
 elliptic-envelope-demo (Wurzel: robuste Ellipse)
-  ├─ ECOD                       (Kontrast: verteilungsfrei)                              [nicht gebaut]
+  ├─ ECOD                       (Kontrast: verteilungsfrei)                              [gebaut]
   ├─ lof-demo → feature-bagging-demo (lokale Dichte; Ensembles gegen viele Merkmale)      [dieses Stück → Nachfolger gebaut]
-  ├─ One-Class SVM → Deep SVDD  (gelernte Grenze)                                        [nicht gebaut]
+  ├─ One-Class SVM → Deep SVDD  (gelernte Grenze)                                        [gebaut]
   ├─ isolation-forest-demo → extended-isolation-forest-demo (Zufallsbäume)               [gebaut]
   └─ autoencoder-anomalie-demo  (Rekonstruktionsfehler)                                  [gebaut]
 ```
@@ -116,6 +116,4 @@ pytest tests/ -v
 
 ---
 
-Teil des [Operations-Research-Demo-Portfolios](https://sebastianhanisch.net/demos.html) von
-[Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning.
-Interesse an einer maßgeschneiderten Lösung? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Anomalie-Erkennung: Ellipse bis Autoencoder](https://sebastianhanisch.net/konzepte-anomalie-erkennung.html).
