@@ -142,6 +142,17 @@ Die Wurzel dieser Linie beschreibt das Normale als **eine** Wolke, der **Isolati
 Damit setzt er genau an den Schwächen an, die in den Vorgängern gemessen wurden - **dichte Anomaliegruppen** und die **Lücke zwischen den Betriebsarten** - und hat eigene: er braucht ein **k**, das zur Gruppengröße passt, und er leidet unter **vielen irrelevanten Merkmalen**.
 """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/lof-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Stellen Sie sich Lieferrouten als Punkte auf einem Blatt vor. Die meisten Touren ähneln sich und liegen dicht beieinander, ein paar Sonderfahrten liegen abseits. Der **Local Outlier Factor** fragt für jede Tour: Ist es in ihrer Umgebung dünner besetzt als bei ihren nächsten Nachbarn? Dazu vergleicht er die Dichte um die Tour mit der Dichte um jeden ihrer Nachbarn. Ein Wert um eins heißt: genauso dicht wie die Nachbarn. Je höher der Wert, desto auffälliger die Tour. Die Demo zeigt, wo das gut gelingt und wo nicht. Die Zahl der Nachbarn muss zur Größe einer Gruppe von Sonderfahrten passen, und bei vielen unwichtigen Kennzahlen versagt die feste Grenze. Die Daten sind künstlich erzeugt.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/lof-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 st.caption(
     "Anders als die Fall-Demos im Portfolio, die an einem Anwendungsfall mehrere Verfahren vergleichen, zeigt diese Demo - viertes Stück der Anomalie-Erkennung-Linie der \"Konzepte\"-Reihe - **ein** Verfahren an einem wachsenden Beispiel. "
     "Szenario, Isolation Forest und die Schätzer der Wurzel (klassisch, robust per MCD) sind wortgleich aus den Vorgänger-Demos übernommen, damit der Vergleich denselben Boden hat. Die Linie hat keinen Konvergenzpunkt; "
@@ -596,6 +607,26 @@ st.caption(
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/lof-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind Touren mit standardisierten Kennzahlen und eine Zahl $k$ von Nachbarn. Gesucht ist der Wert $\text{LOF}_k(a)$ jeder Tour $a$: die mittlere lokale Dichte ihrer Nachbarn geteilt durch ihre eigene.
+
+| Symbol | Bedeutung |
+|---|---|
+| $k$ | Zahl der Nachbarn, die verglichen werden |
+| $N_k(a)$ | die $k$ nächsten Touren zur Tour $a$ |
+| $d(a, b)$ | Abstand zweier Touren (euklidisch, über die standardisierten Kennzahlen) |
+| $\text{kdist}(a)$ | Abstand der Tour $a$ zu ihrem $k$-ten Nachbarn |
+| $\text{reach}_k(a, b)$ | Erreichbarkeitsabstand von $a$ zu $b$: mindestens die $k$-Distanz von $b$ |
+| $\text{lrd}_k(a)$ | lokale Erreichbarkeitsdichte: Kehrwert des mittleren Erreichbarkeitsabstands |
+| $\text{LOF}_k(a)$ | Local Outlier Factor: nahe 1 so dicht wie die Nachbarn, darüber dünner besetzt |
+| $z_j$ | standardisierte Kennzahl $j$ (Mittel 0, Streuung 1) |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/lof-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **k-Nachbarschaft.** Für eine Menge $X$ von $n$ Punkten und $a \in X$: $N_k(a)$ = die $k$ nächsten Punkte (euklidisch, ohne $a$; bei Abstandsgleichheit entscheidet die Reihenfolge der Indizes, wie in scikit-learn), $\text{kdist}(a) = \max_{b \in N_k(a)} d(a, b)$.
