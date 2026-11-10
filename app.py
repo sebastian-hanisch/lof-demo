@@ -201,7 +201,7 @@ with st.sidebar:
     n_noise = st.slider(
         "Rauschmerkmale", *bounds("n_noise_slider"), key="n_noise_slider", step=5,
         help="Zusätzliche unabhängige Spalten ohne Zusammenhang mit den Faktoren. Bei 0 / 10 / 20 / 30 / 40: Recall bei der Schwelle bei LOF 1.00 / 0.71 / 0.18 / 0.03 / 0.00, beim Isolation Forest 0.99 / 0.91 / 0.71 / 0.58 / 0.39 "
-             "(F1 0.94 / 0.82 / 0.30 / 0.05 / 0.00 gegen 0.96 / 0.94 / 0.82 / 0.72 / 0.56). Die AUC bleibt bei beiden 0.99-1.00: die Rangfolge trägt, aber die LOF-Werte rücken an 1 heran (Dimensionsfluch), die Schwelle 1.5 passt nicht mehr.",
+             "(F1 0.94 / 0.82 / 0.30 / 0.05 / 0.00 gegen 0.96 / 0.94 / 0.82 / 0.72 / 0.56). Die AUC bleibt bei beiden 0.99-1.00: die Rangfolge hält, aber die LOF-Werte rücken an 1 heran (Dimensionsfluch), die Schwelle 1.5 passt nicht mehr.",
     )
     n_modes = st.slider(
         "Betriebsarten", *bounds("n_modes_slider"), key="n_modes_slider",
